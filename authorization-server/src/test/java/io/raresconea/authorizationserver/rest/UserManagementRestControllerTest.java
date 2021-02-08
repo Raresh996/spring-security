@@ -1,5 +1,6 @@
 package io.raresconea.authorizationserver.rest;
 
+import io.raresconea.authorizationserver.security.WithCustomUser;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ public class UserManagementRestControllerTest {
 
 	@Test
 	@DisplayName("WHEN user is authenticated THEN calling /users/me should return 200 OK")
-	@WithMockUser
+	@WithCustomUser(authority = "ROLE_USER")
 	public void test2() throws Exception {
 		mockMvc.perform(get("/users/me"))
 				.andExpect(status().isOk());
