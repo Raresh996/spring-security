@@ -23,6 +23,7 @@ Implemented simple authorization + resource servers using oauth2.
 
 # Resource server:
 - Simple rest endpoint application for managing a stock portofolio.
+- Runs on port 9090.
 - Provides entities, repositories, services for portofolio and stock.
 - Stores data in an in memory H2 database
 - Provides controller advices to handle exceptions.
