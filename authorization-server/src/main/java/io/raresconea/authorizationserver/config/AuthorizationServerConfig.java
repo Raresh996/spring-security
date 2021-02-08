@@ -1,5 +1,6 @@
 package io.raresconea.authorizationserver.config;
 
+import io.raresconea.authorizationserver.service.MyClientDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,6 +18,7 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 @EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 	@Autowired private AuthenticationManager authenticationManager;
+	@Autowired private MyClientDetailsService clientDetailsService;
 
 	@Override
 	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
@@ -25,8 +27,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-		clients.inMemory().withClient("client").secret("secret")
-				.authorizedGrantTypes("password", "refresh_token", "authorization_token").scopes("read", "write");
+		clients.withClientDetails(clientDetailsService);
 	}
 
 	@Override

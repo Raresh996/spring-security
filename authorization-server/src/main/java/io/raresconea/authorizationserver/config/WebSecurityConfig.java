@@ -1,6 +1,6 @@
 package io.raresconea.authorizationserver.config;
 
-import io.raresconea.authorizationserver.service.impl.UserDetailsServiceImpl;
+import io.raresconea.authorizationserver.service.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-	@Autowired private UserDetailsServiceImpl userDetailsService;
+	@Autowired private MyUserDetailsService userDetailsService;
 	@Autowired private PasswordEncoder passwordEncoder;
 
 	@Override
