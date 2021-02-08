@@ -6,7 +6,6 @@ import io.raresconea.authorizationserver.entity.User;
 import io.raresconea.authorizationserver.repository.ClientRepository;
 import io.raresconea.authorizationserver.repository.RoleRepository;
 import io.raresconea.authorizationserver.repository.UserRepository;
-import io.raresconea.authorizationserver.service.RoleService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
