@@ -20,7 +20,7 @@ public class PortofolioService {
 
 	public Portofolio findByUsername(String username) {
 		return portofolioRepository.findByUsername(username)
-				.orElseThrow(() -> new PortofolioNotFoundException(String.format("Portofolio of user with username {} not found", username)));
+				.orElseThrow(() -> new PortofolioNotFoundException(String.format("Portofolio of user with username %s not found", username)));
 	}
 
 	@Transactional

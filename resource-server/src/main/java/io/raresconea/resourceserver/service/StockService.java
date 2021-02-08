@@ -21,14 +21,14 @@ public class StockService {
 		Assert.notNull(id, "Stock id can not be null");
 
 		return this.stockRepository.findById(id)
-				.orElseThrow(() -> new StockNotFoundException(String.format("Stock with id {} not found", id)));
+				.orElseThrow(() -> new StockNotFoundException(String.format("Stock with id %s not found", id)));
 	}
 
 	public Stock findByName(String name) {
 		Assert.notNull(name, "Name can not be null");
 
 		return this.stockRepository.findByNameIgnoreCase(name)
-				.orElseThrow(() -> new StockNotFoundException(String.format("Stock with name {} not found", name)));
+				.orElseThrow(() -> new StockNotFoundException(String.format("Stock with name %s not found", name)));
 	}
 
 	@Transactional

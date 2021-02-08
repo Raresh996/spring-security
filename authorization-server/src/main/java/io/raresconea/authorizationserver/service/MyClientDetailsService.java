@@ -19,6 +19,6 @@ public class MyClientDetailsService implements ClientDetailsService {
 	@Override
 	public ClientDetails loadClientByClientId(String clientId) throws ClientRegistrationException {
 		return new MyClientDetails(clientRepository.findByClientId(clientId)
-				.orElseThrow(() -> new ClientNotFoundException(String.format("Client with id {} not found", clientId))));
+				.orElseThrow(() -> new ClientNotFoundException(String.format("Client with id %s not found", clientId))));
 	}
 }

@@ -28,6 +28,6 @@ public class UserService {
 		Assert.notNull(username, "Username can not be null");
 
 		return userRepository.findByUsername(username).orElseThrow(
-				() -> new UsernameNotFoundException(String.format("User with username {} not found", username)));
+				() -> new UsernameNotFoundException(String.format("User with username %s not found", username)));
 	}
 }

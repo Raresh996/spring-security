@@ -24,6 +24,6 @@ public class RoleService {
 		Assert.notNull(name, "Name can not be null");
 
 		return roleRepository.findByNameIgnoreCase(name)
-				.orElseThrow(() -> new RoleNotFoundException(String.format("Role with name {} not found", name)));
+				.orElseThrow(() -> new RoleNotFoundException(String.format("Role with name %s not found", name)));
 	}
 }
