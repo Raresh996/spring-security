@@ -1,6 +1,5 @@
 package io.raresconea.authorizationserver.rest;
 
-import io.raresconea.authorizationserver.security.WithCustomUser;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +13,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 public class UserManagementRestControllerTest {
+	private static final String AUTHENTICATED_ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTUzMjgxNTksInVzZXJfbmFtZSI6ImFkbWluIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9BRE1JTiJdLCJqdGkiOiJrUDlqbzdqNHJoU3Uwc2JIT2pLaVhvemd1NHMiLCJjbGllbnRfaWQiOiJjbGllbnQiLCJzY29wZSI6WyJ3cml0ZSJdfQ.Zsx1zppXvbqXanxpFLvQ2vWrP6x9THCuz-tAEkmIdAs";
 
 	@Autowired
 	private MockMvc mockMvc;
@@ -27,9 +27,9 @@ public class UserManagementRestControllerTest {
 
 	@Test
 	@DisplayName("WHEN user is authenticated THEN calling /users/me should return 200 OK")
-	@WithCustomUser(authority = "ROLE_USER")
 	public void test2() throws Exception {
-		mockMvc.perform(get("/users/me"))
+		mockMvc.perform(get("/users/me")
+				.header("Authorization", "Bearer " + AUTHENTICATED_ACCESS_TOKEN))
 				.andExpect(status().isOk());
 	}
 
